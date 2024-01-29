@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "s4V4qL7j2k9VQB7Qfl6N2S6xou7lLBdlh0RrhsiAe+7u5qfZpagfmzWO1DLzf0EMptpKOXD2t7JbrGz1tr12LQ==",
+  "success": true,
+  "projectFilePath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.15\\microsoft.windowsdesktop.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.15\\microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.15\\microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.15\\microsoft.netcore.app.host.win-x64.7.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}
