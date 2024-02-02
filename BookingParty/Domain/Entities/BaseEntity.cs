@@ -25,6 +25,6 @@ namespace Domain.Entities
 
         public int? DeletedBy { get; set; }
 
-        public bool IsDeleted { get; set; }
+        public bool Status { get; set; }
     }
 }

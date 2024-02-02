@@ -81,8 +81,9 @@ namespace Infrastructures.Repositories
 
         public void SoftRemove(TEntity entity)
         {
-            entity.IsDeleted = true;
+            entity.Status = false;
             entity.DeletedBy = _claimsService.GetCurrentUserId;
+            entity.DeletedDate = _timeService.GetCurrentTime();
             _dbSet.Update(entity);
         }
 
@@ -107,7 +108,7 @@ namespace Infrastructures.Repositories
         {
             foreach (var entity in entities)
             {
-                entity.IsDeleted = true;
+                entity.Status = false;
                 entity.DeletedDate = _timeService.GetCurrentTime();
                 entity.DeletedBy = _claimsService.GetCurrentUserId;
             }

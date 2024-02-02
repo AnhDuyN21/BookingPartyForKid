@@ -17,6 +17,7 @@ namespace Infrastructures
         //DBSet
         // Tương ứng với các bảng trong DB
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Party> Party { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

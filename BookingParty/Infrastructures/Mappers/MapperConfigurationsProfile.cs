@@ -3,6 +3,7 @@ using Application.Commons;
 using Domain.Entities;
 using Application.ViewModel.AccountDTO;
 using Application.ViewModel.RegisterAccountDTO;
+using Application.ViewModel.UpdateAccountDTO;
 
 
 namespace Infrastructures.Mappers
@@ -20,9 +21,12 @@ namespace Infrastructures.Mappers
             //RegisterAccount ROLE: HOST
             CreateMap<RegisterAccountDTO, Account>().ReverseMap();
             CreateMap<RegisterAccountDTO, AccountDTO>();
+            //UpdateAccount
+            CreateMap<UpdateAccountDTO, Account>().ReverseMap();
+            CreateMap<UpdateAccountDTO, AccountDTO>();
 
 
-           
+
 
             CreateMap(typeof(Pagination<>), typeof(Pagination<>));
         }

@@ -48,8 +48,13 @@ namespace Application.Services
                     response.Message = "Invalid username or password";
                     return response;
                 }
-
-                if (user.ConfirmationToken != null && !user.IsConfirmed)
+                if(user.Status == false)
+                {
+                    response.Success = false;
+                    response.Message = "Account is unactive";
+                    return response;
+                }
+                if (user.ConfirmationToken != null && user.IsConfirmed == false)
                 {
                     System.Console.WriteLine("Username: "+user.FullName);
                     System.Console.WriteLine("User token: " +user.ConfirmationToken + " IsConfirmed: "+user.IsConfirmed);
@@ -108,6 +113,9 @@ namespace Application.Services
                 account.Status = true;
                 //Set role
                 account.Role = "Host";
+                //chuyển đổi gender thành chữ thường
+                account.Gender = registerAccountDTO.Gender.ToLower();
+
                 await _unitOfWork.AccountRepository.AddAsync(account);
 
                 var confirmationLink = $"https://localhost:7233/swagger/confirm?token={account.ConfirmationToken}";

@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
             _authenticationService = authenticationService;
         }
 
-        [HttpPost]
+        [HttpPost("RegisterHost")]
         public async Task<IActionResult> RegisterAsync(RegisterAccountDTO registerObject)
         {
             var result = await _authenticationService.RegisterAsync(registerObject);

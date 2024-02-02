@@ -16,11 +16,11 @@ namespace Application.ViewModel.AccountDTO
         public string? Gender { get; set; }
 
 
-        public string? PasswordHash { get; set; }
+        public string? Password { get; set; }
 
 
         public string? PhoneNumber { get; set; }
         //public  int? Status { get; set; }
-        public string? Role { get; set; }
+        //public string? Role { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Infrastructures.FluentAPIs
         {
             builder.HasKey(s => s.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
-
+            builder.HasMany(x => x.Party).WithOne(x => x.CreatedBy);
         }
     }
 }

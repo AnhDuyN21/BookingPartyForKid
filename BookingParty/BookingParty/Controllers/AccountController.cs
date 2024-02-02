@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.ViewModel.AccountDTO;
-
+using Application.ViewModel.UpdateAccountDTO;
 using Domain.Entities;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 
 namespace WebAPI.Controllers
 {
@@ -19,7 +20,7 @@ namespace WebAPI.Controllers
         {
             _accountService = accountService;
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> GetAccountList()
         {
@@ -29,8 +30,8 @@ namespace WebAPI.Controllers
 
 
 
-        [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] CreatedAccountDTO createdAccountDTO)
+        [HttpPost("RegisterGuest")]
+        public async Task<IActionResult> RegisterGuest([FromBody] CreatedAccountDTO createdAccountDTO)
         {
             //Dòng này kiểm tra xem dữ liệu đầu vào (trong trường hợp này là createdAccountDTO)
             //đã được kiểm tra tính hợp lệ bằng các quy tắc mô hình (model validation) hay chưa.
@@ -55,7 +56,7 @@ namespace WebAPI.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] AccountDTO accountDTO)
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateAccountDTO accountDTO)
         {
             var updatedUser = await _accountService.UpdateUserAsync(id, accountDTO);
             if (!updatedUser.Success)
@@ -76,7 +77,7 @@ namespace WebAPI.Controllers
             }
             return Ok(deletedUser);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAccountById(int id)
         {
@@ -88,22 +89,38 @@ namespace WebAPI.Controllers
             return Ok(findaccountUser);
         }
 
-        [Authorize(Roles = "Admin")]
-        [Authorize]
-        [HttpPost("change-password/{userId}")]
-        public async Task<IActionResult> ChangePassword(int userId, [FromBody] ChangePasswordDTO changePasswordDto)
-        {
-            var result = await _accountService.ChangePasswordAsync(userId, changePasswordDto);
 
-            if (result.Success)
+
+        [Authorize]
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO changePasswordDto)
+        {
+            // Lấy thông tin người dùng từ ClaimsPrincipal
+            var userIdClaim = User.FindFirst("Id");
+
+            if (userIdClaim != null && int.TryParse(userIdClaim.Value, out var userId))
             {
-                return Ok(new { Message = result.Message });
+                // Gọi phương thức đổi mật khẩu trong service và trả về kết quả
+                var result = await _accountService.ChangePasswordAsync(userId, changePasswordDto);
+
+                if (result.Success)
+                {
+                    return Ok(new { Message = result.Message });
+                }
+                else
+                {
+                    return BadRequest(new { Message = result.Message });
+                }
             }
             else
             {
-                return BadRequest(new { Message = result.Message });
+                // Trả về thông báo lỗi nếu không tìm thấy hoặc không thể chuyển đổi giá trị ID
+                return BadRequest(new { Message = "User ID not found or invalid in the token." });
             }
         }
+
+
+
 
         [Authorize(Roles = "Admin")]
         [HttpGet("{name}")]

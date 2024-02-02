@@ -12,10 +12,12 @@ namespace Domain.Entities
         public string? Email { get; set; }
         public string? Gender { get; set; }
         public string? PasswordHash { get; set; }
-        public bool Status { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Role { get; set; }
         public string? ConfirmationToken { get; set; }
         public bool IsConfirmed { get; set; }
+        //Party
+        public virtual ICollection<Party>? Party { get; set; }
+
     }
 }

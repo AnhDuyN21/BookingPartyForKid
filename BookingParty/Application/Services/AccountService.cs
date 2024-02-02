@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Data.Common;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
 using Application.Commons;
 using Application.Interfaces;
 using Application.ServiceResponse;
 using Application.ViewModel.AccountDTO;
-
+using Application.ViewModel.UpdateAccountDTO;
 using AutoMapper;
 using Domain.Entities;
 
@@ -47,8 +48,11 @@ namespace Application.Services
             try
             {
                 var account = _mapper.Map<Account>(createdAccountDTO);
-                account.PasswordHash = Utils.HashPassword.HashWithSHA256(createdAccountDTO.PasswordHash);
+                account.PasswordHash = Utils.HashPassword.HashWithSHA256(createdAccountDTO.Password);
                 account.Role = "Guest";
+                //chuyển đổi gender thành chữ thường
+                account.Gender = createdAccountDTO.Gender.ToLower();
+
                 account.Status = true;
 
                 await _unitOfWork.AccountRepository.AddAsync(account);
@@ -138,7 +142,7 @@ namespace Application.Services
 
                 foreach (var acc in accounts)
                 {
-                    if (!acc.IsDeleted)
+                    if (acc.Status)
                     {
                         accountDTOs.Add(_mapper.Map<AccountDTO>(acc));
                     }
@@ -185,7 +189,60 @@ namespace Application.Services
 
             return response;
         }
-        public async Task<ServiceResponse<AccountDTO>> UpdateUserAsync(int id, AccountDTO accountDTO)
+        //public async Task<ServiceResponse<AccountDTO>> UpdateUserAsync(int id, AccountDTO accountDTO)
+        //{
+        //    var response = new ServiceResponse<AccountDTO>();
+
+        //    try
+        //    {
+        //        var existingUser = await _unitOfWork.AccountRepository.GetByIdAsync(id);
+
+        //        if (existingUser == null)
+        //        {
+        //            response.Success = false;
+        //            response.Message = "Account not found.";
+        //            return response;
+        //        }
+
+        //        if (existingUser.Status == false)
+        //        {
+        //            response.Success = false;
+        //            response.Message = "Account is deleted in system";
+        //            return response;
+        //        }
+
+
+        //        // Map accountDT0 => existingUser
+        //        var updated = _mapper.Map(accountDTO, existingUser);
+        //        updated.PasswordHash = Utils.HashPassword.HashWithSHA256(accountDTO.PasswordHash);
+
+        //        _unitOfWork.AccountRepository.Update(existingUser);
+
+        //        var updatedUserDto = _mapper.Map<AccountDTO>(updated);
+        //        var isSuccess = await _unitOfWork.SaveChangeAsync() > 0;
+
+        //        if (isSuccess)
+        //        {
+        //            response.Data = updatedUserDto;
+        //            response.Success = true;
+        //            response.Message = "Account updated successfully.";
+        //        }
+        //        else
+        //        {
+        //            response.Success = false;
+        //            response.Message = "Error updating the account.";
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response.Success = false;
+        //        response.Message = "Error";
+        //        response.ErrorMessages = new List<string> { ex.Message };
+        //    }
+
+        //    return response;
+        //}
+        public async Task<ServiceResponse<AccountDTO>> UpdateUserAsync(int id, UpdateAccountDTO accountDTO)
         {
             var response = new ServiceResponse<AccountDTO>();
 
@@ -200,7 +257,7 @@ namespace Application.Services
                     return response;
                 }
 
-                if (existingUser.IsDeleted)
+                if (existingUser.Status == false)
                 {
                     response.Success = false;
                     response.Message = "Account is deleted in system";
@@ -210,7 +267,7 @@ namespace Application.Services
 
                 // Map accountDT0 => existingUser
                 var updated = _mapper.Map(accountDTO, existingUser);
-                updated.PasswordHash = Utils.HashPassword.HashWithSHA256(accountDTO.PasswordHash);
+                
 
                 _unitOfWork.AccountRepository.Update(existingUser);
 
@@ -248,6 +305,13 @@ namespace Application.Services
             {
                 response.Success = false;
                 response.Message = "Account not found";
+                return response;
+            }
+            // Kiểm tra xem người dùng đang cố gắng thay đổi mật khẩu của chính họ hay không
+            if (user.Id != userId)
+            {
+                response.Success = false;
+                response.Message = "Unauthorized to change password for another account";
                 return response;
             }
 
@@ -288,6 +352,8 @@ namespace Application.Services
 
         }
 
+
+
         public async Task<ServiceResponse<IEnumerable<AccountDTO>>> SearchAccountByNameAsync(string name)
         {
             var response = new ServiceResponse<IEnumerable<AccountDTO>>();
@@ -300,7 +366,7 @@ namespace Application.Services
 
                 foreach (var acc in accounts)
                 {
-                    if (!acc.IsDeleted)
+                    if (!acc.Status)
                     {
                         accountDTOs.Add(_mapper.Map<AccountDTO>(acc));
                     }
@@ -341,7 +407,7 @@ namespace Application.Services
 
                 foreach (var acc in accounts)
                 {
-                    if (!acc.IsDeleted)
+                    if (!acc.Status)
                     {
                         accountDTOs.Add(_mapper.Map<AccountDTO>(acc));
                     }
@@ -382,7 +448,7 @@ namespace Application.Services
 
                 foreach (var acc in accounts)
                 {
-                    if (!acc.IsDeleted)
+                    if (!acc.Status)
                     {
                         accountDTOs.Add(_mapper.Map<AccountDTO>(acc));
                     }
