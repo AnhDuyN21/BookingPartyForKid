@@ -17,14 +17,16 @@ namespace Infrastructures
         //DBSet
         // Tương ứng với các bảng trong DB
         public DbSet<Account> Accounts { get; set; }
-        public DbSet<Party> Party { get; set; }
+        public DbSet<Party> Partys { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.ApplyConfigurationsFromAssembly(typeof(AccountDetailsConfiguration).Assembly);
 
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           
 
+        }
 
     }
 }

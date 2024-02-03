@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> RegisterAsync(RegisterAccountDTO registerObject)
         {
             var result = await _authenticationService.RegisterAsync(registerObject);
-            if (!result.Success)
+            if (result.Success)
             {
                 return Ok(result);
             }

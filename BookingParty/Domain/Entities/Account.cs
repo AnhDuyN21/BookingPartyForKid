@@ -16,8 +16,13 @@ namespace Domain.Entities
         public string? Role { get; set; }
         public string? ConfirmationToken { get; set; }
         public bool IsConfirmed { get; set; }
-        //Party
+        //Relationship
         public virtual ICollection<Party>? Party { get; set; }
-
+        public virtual ICollection<Booking>? Booking { get; set; }
+        public virtual ICollection<Review>? Review { get; set; }
+        public Account() 
+        { 
+            Party = new List<Party>();
+        }
     }
 }
