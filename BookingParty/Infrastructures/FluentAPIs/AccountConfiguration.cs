@@ -13,9 +13,11 @@ namespace Infrastructures.FluentAPIs
     {
         public void Configure(EntityTypeBuilder<Account> builder)
         {
-            builder.HasKey(s => s.Id);
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
-            
+            builder.HasMany(x => x.Party).WithOne(x => x.Account);
+            builder.HasMany(x => x.Booking).WithOne(x => x.Account);
+            builder.HasMany(x => x.Review).WithOne(x => x.Account);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
             if (ModelState.IsValid)
             {
                 var response = await _accountService.CreateAccountAsync(createdAccountDTO);
-                if (!response.Success)
+                if (response.Success)
                 {
                     return Ok(response);
                 }
