@@ -17,6 +17,7 @@ namespace Infrastructures
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();  
             services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IPartyRepository, PartyRepository>();
             
 
             services.AddSingleton<ICurrentTime, CurrentTime>();

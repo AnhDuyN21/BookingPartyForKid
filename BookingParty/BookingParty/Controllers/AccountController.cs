@@ -11,7 +11,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
-namespace WebAPI.Controllers
+namespace BookingParty.Controllers
 {
     public class AccountController : BaseController
     {

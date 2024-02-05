@@ -8,10 +8,11 @@ namespace Domain.Entities
 {
     public class Review : BaseEntity
     {
-        public int? PartyID { get; set; }
-        public int? BookingID { get; set; }
+        public int PartyID { get; set; }
+        public int BookingID { get; set; }
         public Rating Rating { get; set; }
         public string? Comment {  get; set; }
+        //Relationship
         public virtual Account? Account { get; set; }
         public virtual Booking? Booking { get; set; }
         public virtual Party? Party { get; set; }

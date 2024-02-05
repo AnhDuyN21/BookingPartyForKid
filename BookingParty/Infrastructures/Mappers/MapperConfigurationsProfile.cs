@@ -4,6 +4,7 @@ using Domain.Entities;
 using Application.ViewModel.AccountDTO;
 using Application.ViewModel.RegisterAccountDTO;
 using Application.ViewModel.UpdateAccountDTO;
+using Application.ViewModel.PartyDTO;
 
 
 namespace Infrastructures.Mappers
@@ -24,6 +25,13 @@ namespace Infrastructures.Mappers
             //UpdateAccount
             CreateMap<UpdateAccountDTO, Account>().ReverseMap();
             CreateMap<UpdateAccountDTO, AccountDTO>();
+            //Party
+            CreateMap<Party, PartyDTO>().ReverseMap();
+            CreateMap<PartyDTO, PartyDTO>().ReverseMap();
+            //CreateParty
+            CreateMap<CreatePartyDTO, Party>().ReverseMap();
+            CreateMap<CreatePartyDTO,PartyDTO>();
+
 
 
 

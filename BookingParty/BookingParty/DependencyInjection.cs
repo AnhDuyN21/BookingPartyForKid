@@ -28,6 +28,7 @@ namespace WebAPI
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IPartyService, PartyService>();
             services.AddScoped<IClaimsService, ClaimsService>();
             
            

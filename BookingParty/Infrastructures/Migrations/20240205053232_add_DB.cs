@@ -49,8 +49,9 @@ namespace Infrastructures.Migrations
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Price = table.Column<int>(type: "int", nullable: true),
+                    Price = table.Column<int>(type: "int", nullable: false),
                     Theme = table.Column<int>(type: "int", nullable: false),
+                    PackageOption = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AccountId = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<int>(type: "int", nullable: true),
@@ -65,7 +66,7 @@ namespace Infrastructures.Migrations
                     table.PrimaryKey("PK_Partys", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Partys_Accounts_AccountId",
-                        column: x => x.AccountId,
+                        column: x => x.CreatedBy,
                         principalTable: "Accounts",
                         principalColumn: "Id");
                 });
@@ -94,7 +95,7 @@ namespace Infrastructures.Migrations
                     table.PrimaryKey("PK_Bookings", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Bookings_Accounts_AccountId",
-                        column: x => x.AccountId,
+                        column: x => x.CreatedBy,
                         principalTable: "Accounts",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -110,8 +111,8 @@ namespace Infrastructures.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PartyID = table.Column<int>(type: "int", nullable: true),
-                    BookingID = table.Column<int>(type: "int", nullable: true),
+                    PartyID = table.Column<int>(type: "int", nullable: false),
+                    BookingID = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AccountId = table.Column<int>(type: "int", nullable: true),
@@ -128,25 +129,27 @@ namespace Infrastructures.Migrations
                     table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Reviews_Accounts_AccountId",
-                        column: x => x.AccountId,
+                        column: x => x.CreatedBy,
                         principalTable: "Accounts",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Reviews_Bookings_BookingID",
                         column: x => x.BookingID,
                         principalTable: "Bookings",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Reviews_Partys_PartyID",
                         column: x => x.PartyID,
                         principalTable: "Partys",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_AccountId",
                 table: "Bookings",
-                column: "AccountId");
+                column: "CreatedBy");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_PartyID",
@@ -156,19 +159,18 @@ namespace Infrastructures.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Partys_AccountId",
                 table: "Partys",
-                column: "AccountId");
+                column: "CreatedBy");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_AccountId",
                 table: "Reviews",
-                column: "AccountId");
+                column: "CreatedBy");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_BookingID",
                 table: "Reviews",
                 column: "BookingID",
-                unique: true,
-                filter: "[BookingID] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_PartyID",
