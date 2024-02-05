@@ -14,11 +14,7 @@ namespace Infrastructures.Repositories
     {
         private readonly AppDbContext _dbContext;
 
-        public AccountRepository(
-            AppDbContext context,
-            ICurrentTime timeService,
-            IClaimsService claimsService
-        )
+        public AccountRepository(AppDbContext context, ICurrentTime timeService, IClaimsService claimsService)
             : base(context, timeService, claimsService)
         {
             _dbContext = context;

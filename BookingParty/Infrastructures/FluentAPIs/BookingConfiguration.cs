@@ -15,7 +15,7 @@ namespace Infrastructures.FluentAPIs
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
-            builder.HasOne(x => x.Account).WithMany(x => x.Booking);
+            builder.HasOne(x => x.Account).WithMany(x => x.Booking).HasForeignKey(x => x.CreatedBy).HasPrincipalKey(x => x.Id);
             builder.HasOne(x => x.Party).WithMany(x => x.Booking).HasForeignKey(x => x.PartyID);
             builder.HasOne(x => x.Review);
         }

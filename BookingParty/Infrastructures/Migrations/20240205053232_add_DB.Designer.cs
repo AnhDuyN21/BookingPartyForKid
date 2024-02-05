@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructures.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240203112705_add_DB")]
+    [Migration("20240205053232_add_DB")]
     partial class add_DB
     {
         /// <inheritdoc />
@@ -178,7 +178,10 @@ namespace Infrastructures.Migrations
                     b.Property<DateTime?>("ModificationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("Price")
+                    b.Property<string>("PackageOption")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
@@ -208,7 +211,7 @@ namespace Infrastructures.Migrations
                     b.Property<int?>("AccountId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BookingID")
+                    b.Property<int>("BookingID")
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
@@ -232,7 +235,7 @@ namespace Infrastructures.Migrations
                     b.Property<DateTime?>("ModificationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PartyID")
+                    b.Property<int>("PartyID")
                         .HasColumnType("int");
 
                     b.Property<int>("Rating")
@@ -246,8 +249,7 @@ namespace Infrastructures.Migrations
                     b.HasIndex("AccountId");
 
                     b.HasIndex("BookingID")
-                        .IsUnique()
-                        .HasFilter("[BookingID] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("PartyID");
 
@@ -286,11 +288,15 @@ namespace Infrastructures.Migrations
 
                     b.HasOne("Domain.Entities.Booking", "Booking")
                         .WithOne("Review")
-                        .HasForeignKey("Domain.Entities.Review", "BookingID");
+                        .HasForeignKey("Domain.Entities.Review", "BookingID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Party", "Party")
                         .WithMany("Review")
-                        .HasForeignKey("PartyID");
+                        .HasForeignKey("PartyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 

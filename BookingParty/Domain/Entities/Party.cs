@@ -13,8 +13,9 @@ namespace Domain.Entities
         public string? Address {  get; set; }
         public string? City { get; set; }
         public DateTime? DateTime { get; set; }
-        public int? Price { get; set; }
+        public int Price { get; set; }
         public PartyTheme Theme { get; set; }
+        public string? PackageOption {  get; set; }
 
         //Relationship
         public virtual Account? Account { get; set; }
@@ -26,7 +27,7 @@ namespace Domain.Entities
             Booking = new List<Booking>();
         }
     }
-    public enum PartyTheme
+    public enum PartyTheme:int
     {
         //Sinh nhật
         Birthday = 0,

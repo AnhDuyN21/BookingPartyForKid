@@ -10,7 +10,7 @@ using Azure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace BookingParty.Controllers
 {
     public class AuthenticationController : BaseController
     {
