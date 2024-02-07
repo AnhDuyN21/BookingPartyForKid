@@ -28,6 +28,7 @@ namespace Infrastructures.Repositories
                 
             var result = allParty.Select(p => new PartyDTO
             {
+                Id = p.Id,
                 Title = p.Title,
                 City    = p.City,
                 DateTime = p.DateTime,
