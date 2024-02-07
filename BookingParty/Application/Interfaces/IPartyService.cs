@@ -10,7 +10,8 @@ namespace Application.Interfaces
 {
     public interface IPartyService
     {
-        Task<ServiceResponse<IEnumerable<PartyDTO>>> GetPartyAsync();
+        Task<ServiceResponse<IEnumerable<PartyDTO>>> GetPartyAsync(string search);
+        Task<ServiceResponse<IEnumerable<PartyDTO>>> GetAllPartyAsync();
         Task<ServiceResponse<PartyDTO>>CreateParty(CreatePartyDTO createPartyDTO);
     }
 }

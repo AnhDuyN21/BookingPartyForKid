@@ -40,7 +40,7 @@ namespace BookingParty.Controllers
         {
             var result = await _authenticationService.LoginAsync(loginObject);
 
-            if (!result.Success)
+            if (result.Success)
             {
                 return BadRequest(result);
             }

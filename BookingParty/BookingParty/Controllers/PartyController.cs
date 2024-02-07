@@ -16,10 +16,16 @@ namespace BookingParty.Controllers
             _partyService = partyService;
         }
         [HttpGet]
-        public async Task<IActionResult> GetPartyList()
+        public async Task<IActionResult> GetPartyListByCity(string City)
+        {   
+            var party = await _partyService.GetPartyAsync(City);
+            return Ok(party);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllParty()
         {
-            var User = await _partyService.GetPartyAsync();
-            return Ok(User);
+            var party = await _partyService.GetAllPartyAsync();
+            return Ok(party);
         }
         [Authorize(Roles = "Host")]
         [HttpPost]

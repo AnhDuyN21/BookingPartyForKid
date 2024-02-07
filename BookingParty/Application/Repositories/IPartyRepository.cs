@@ -10,6 +10,6 @@ namespace Application.Repositories
 {
     public interface IPartyRepository : IGenericRepository<Party>
     {
-        
+        Task<IEnumerable<PartyDTO>> GetPartyBy(string search);
     }
 }

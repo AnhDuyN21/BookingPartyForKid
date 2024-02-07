@@ -13,5 +13,6 @@ namespace Application.ViewModel.PartyDTO
         public string? City { get; set; }
         public DateTime? DateTime { get; set; }
         public PartyTheme Theme { get; set; }
+        public bool Status {  get; set; }
     }
 }

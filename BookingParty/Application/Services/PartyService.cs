@@ -62,12 +62,53 @@ namespace Application.Services
             return response;
         }
 
-        public async Task<ServiceResponse<IEnumerable<PartyDTO>>> GetPartyAsync()
+        public async Task<ServiceResponse<IEnumerable<PartyDTO>>> GetAllPartyAsync()
         {
             var respone = new ServiceResponse<IEnumerable<PartyDTO>>();
             try
             {
+
+
                 var partys = await _unitOfWork.PartyRepository.GetAllAsync();
+                var partyDTO = new List<PartyDTO>();
+                foreach (var party in partys)
+                {
+                    if (party.Status)
+                    {
+                        partyDTO.Add(_mapper.Map<PartyDTO>(party));
+
+                    }
+                }
+                if (partyDTO.Count > 0)
+                {
+                    respone.Success = true;
+                    respone.Message = "Get all Party available successfully";
+                    respone.Data = partyDTO;
+                }
+                else
+                {
+                    respone.Success = true;
+                    respone.Message = "Not have Party";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                respone.Success = false;
+                respone.Message = "Error";
+                respone.ErrorMessages = new List<string> { Convert.ToString(ex.Message) };
+            }
+            return respone;
+        }
+
+        public async Task<ServiceResponse<IEnumerable<PartyDTO>>> GetPartyAsync(string search)
+        {
+            var respone = new ServiceResponse<IEnumerable<PartyDTO>>();
+            try
+            {
+
+
+                var partys = await _unitOfWork.PartyRepository.GetPartyBy(search);
                 var partyDTO = new List<PartyDTO>();
                 foreach (var party in partys)
                 {
