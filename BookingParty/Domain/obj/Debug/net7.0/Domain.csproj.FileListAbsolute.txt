@@ -13,3 +13,18 @@ D:\FPT University\CN7\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\ne
 D:\FPT University\CN7\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.pdb
 D:\FPT University\CN7\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.genruntimeconfig.cache
 D:\FPT University\CN7\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\ref\Domain.dll
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\bin\Debug\net7.0\Domain.exe
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\bin\Debug\net7.0\Domain.deps.json
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\bin\Debug\net7.0\Domain.runtimeconfig.json
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\bin\Debug\net7.0\Domain.dll
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\bin\Debug\net7.0\Domain.pdb
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.sourcelink.json
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.dll
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\refint\Domain.dll
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.pdb
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\Domain.genruntimeconfig.cache
+D:\How\SWD392\BookingPartyForKid\BookingParty\Domain\obj\Debug\net7.0\ref\Domain.dll
