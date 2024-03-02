@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructures.Migrations
 {
     /// <inheritdoc />
-    public partial class add_DB : Migration
+    public partial class addDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,12 +25,6 @@ namespace Infrastructures.Migrations
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ConfirmationToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<int>(type: "int", nullable: true),
-                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModificationBy = table.Column<int>(type: "int", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -50,15 +44,12 @@ namespace Infrastructures.Migrations
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Price = table.Column<int>(type: "int", nullable: false),
-                    Theme = table.Column<int>(type: "int", nullable: false),
+                    Theme = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PackageOption = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Max_People = table.Column<int>(type: "int", nullable: false),
+                    Image_url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HostID = table.Column<int>(type: "int", nullable: false),
                     AccountId = table.Column<int>(type: "int", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<int>(type: "int", nullable: true),
-                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModificationBy = table.Column<int>(type: "int", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -66,7 +57,7 @@ namespace Infrastructures.Migrations
                     table.PrimaryKey("PK_Partys", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Partys_Accounts_AccountId",
-                        column: x => x.CreatedBy,
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id");
                 });
@@ -77,17 +68,12 @@ namespace Infrastructures.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PaymentStatus = table.Column<int>(type: "int", nullable: false),
-                    TotalPrice = table.Column<int>(type: "int", nullable: false),
+                    NumberOfPeople = table.Column<int>(type: "int", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NoteForHost = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PartyID = table.Column<int>(type: "int", nullable: true),
+                    GuestID = table.Column<int>(type: "int", nullable: false),
                     AccountId = table.Column<int>(type: "int", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<int>(type: "int", nullable: true),
-                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModificationBy = table.Column<int>(type: "int", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -95,7 +81,7 @@ namespace Infrastructures.Migrations
                     table.PrimaryKey("PK_Bookings", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Bookings_Accounts_AccountId",
-                        column: x => x.CreatedBy,
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -112,26 +98,20 @@ namespace Infrastructures.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PartyID = table.Column<int>(type: "int", nullable: false),
+                    AccountID = table.Column<int>(type: "int", nullable: false),
                     BookingID = table.Column<int>(type: "int", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AccountId = table.Column<int>(type: "int", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<int>(type: "int", nullable: true),
-                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModificationBy = table.Column<int>(type: "int", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reviews_Accounts_AccountId",
-                        column: x => x.CreatedBy,
+                        name: "FK_Reviews_Accounts_AccountID",
+                        column: x => x.AccountID,
                         principalTable: "Accounts",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Reviews_Bookings_BookingID",
                         column: x => x.BookingID,
@@ -149,7 +129,7 @@ namespace Infrastructures.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_AccountId",
                 table: "Bookings",
-                column: "CreatedBy");
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_PartyID",
@@ -159,12 +139,12 @@ namespace Infrastructures.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Partys_AccountId",
                 table: "Partys",
-                column: "CreatedBy");
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_AccountId",
+                name: "IX_Reviews_AccountID",
                 table: "Reviews",
-                column: "CreatedBy");
+                column: "AccountID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_BookingID",

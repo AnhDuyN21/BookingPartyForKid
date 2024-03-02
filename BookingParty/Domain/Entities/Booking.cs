@@ -8,10 +8,11 @@ namespace Domain.Entities
 {
     public class Booking : BaseEntity
     {
-        public PaymentStatus PaymentStatus { get; set; }
-        public int TotalPrice {  get; set; }
+        public  int NumberOfPeople {  get; set; }
+        public DateTime StartDate { get; set; }
         public string? NoteForHost {  get; set; }
         public int? PartyID {get; set; }
+        public int GuestID {  get; set; }
         //Relationship
         public virtual Party? Party { get; set; }
         public virtual Account? Account { get; set; }

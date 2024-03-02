@@ -14,8 +14,11 @@ namespace Domain.Entities
         public string? City { get; set; }
         public DateTime? DateTime { get; set; }
         public int Price { get; set; }
-        public PartyTheme Theme { get; set; }
+        public string Theme { get; set; }
         public string? PackageOption {  get; set; }
+        public int Max_People {  get; set; }
+        public string Image_url {  get; set; }
+        public int HostID {  get; set; }
 
         //Relationship
         public virtual Account? Account { get; set; }
@@ -26,15 +29,6 @@ namespace Domain.Entities
             // Khi chưa có booking nào thì list sẽ rỗng chứ không bằng null
             Booking = new List<Booking>();
         }
-    }
-    public enum PartyTheme:int
-    {
-        //Sinh nhật
-        Birthday = 0,
-        //Liên hoan
-        congratulations = 1,
-        //Chúc mừng
-        Happy = 2,
     }
 
 }

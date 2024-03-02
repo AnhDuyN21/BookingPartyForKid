@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nOxIAXnRrLrTzpKYBrnSGEfdXa1yJEfAyY2iFhGQEHoxpH2tgXKtbcJ3RRSm9sRrMFq0RTqSPse3ZxgKimyeuw==",
+  "dgSpecHash": "mws5qgte2FuLrBGnEAfjy6OTtrreJBIrq58kYqtjF2FBTRBVGV+u9r8zuc/Tmi6GVQ9L2f/LQSE1ujWV01VvsA==",
   "success": true,
-  "projectFilePath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj",
+  "projectFilePath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

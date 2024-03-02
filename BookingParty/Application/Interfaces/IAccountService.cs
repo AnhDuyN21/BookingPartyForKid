@@ -25,7 +25,7 @@ namespace Application.Interfaces
         Task<ServiceResponse<string>> ChangePasswordAsync(int userId, ChangePasswordDTO changePasswordDto);
         Task<ServiceResponse<IEnumerable<AccountDTO>>> SearchAccountByNameAsync(string name);
         Task<ServiceResponse<IEnumerable<AccountDTO>>> SearchAccountByRoleNameAsync(string name);
-        Task<ServiceResponse<IEnumerable<AccountDTO>>> GetSortedAccountsAsync();
+        //Task<ServiceResponse<IEnumerable<AccountDTO>>> GetSortedAccountsAsync();
 
         
 

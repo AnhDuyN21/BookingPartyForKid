@@ -436,46 +436,46 @@ namespace Application.Services
             return response;
         }
 
-        public async Task<ServiceResponse<IEnumerable<AccountDTO>>> GetSortedAccountsAsync()
-        {
-            var response = new ServiceResponse<IEnumerable<AccountDTO>>();
+        //public async Task<ServiceResponse<IEnumerable<AccountDTO>>> GetSortedAccountsAsync()
+        //{
+        //    var response = new ServiceResponse<IEnumerable<AccountDTO>>();
 
-            try
-            {
-                var accounts = await _unitOfWork.AccountRepository.GetSortedAccountAsync();
+        //    try
+        //    {
+        //        var accounts = await _unitOfWork.AccountRepository.GetSortedAccountAsync();
 
-                var accountDTOs = new List<AccountDTO>();
+        //        var accountDTOs = new List<AccountDTO>();
 
-                foreach (var acc in accounts)
-                {
-                    if (!acc.Status)
-                    {
-                        accountDTOs.Add(_mapper.Map<AccountDTO>(acc));
-                    }
-                }
+        //        foreach (var acc in accounts)
+        //        {
+        //            if (!acc.Status)
+        //            {
+        //                accountDTOs.Add(_mapper.Map<AccountDTO>(acc));
+        //            }
+        //        }
 
-                if (accountDTOs.Count != 0)
-                {
-                    response.Success = true;
-                    response.Message = "Account retrieved successfully";
-                    response.Data = accountDTOs;
-                }
-                else
-                {
-                    response.Success = false;
-                    response.Message = "Not have Account";
-                }
+        //        if (accountDTOs.Count != 0)
+        //        {
+        //            response.Success = true;
+        //            response.Message = "Account retrieved successfully";
+        //            response.Data = accountDTOs;
+        //        }
+        //        else
+        //        {
+        //            response.Success = false;
+        //            response.Message = "Not have Account";
+        //        }
 
-            }
-            catch (Exception ex)
-            {
-                response.Success = false;
-                response.Message = "Error";
-                response.ErrorMessages = new List<string> { ex.Message };
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response.Success = false;
+        //        response.Message = "Error";
+        //        response.ErrorMessages = new List<string> { ex.Message };
+        //    }
 
-            return response;
-        }
+        //    return response;
+        //}
     
     }
 }

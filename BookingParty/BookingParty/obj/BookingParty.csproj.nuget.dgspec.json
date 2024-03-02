@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\BookingParty\\BookingParty.csproj": {}
+    "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\BookingParty\\BookingParty.csproj": {}
   },
   "projects": {
-    "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj": {
+    "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj",
+        "projectPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Application\\obj\\",
+        "outputPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj"
+              "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj"
               }
             }
           }
@@ -107,14 +107,14 @@
         }
       }
     },
-    "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\BookingParty\\BookingParty.csproj": {
+    "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\BookingParty\\BookingParty.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\BookingParty\\BookingParty.csproj",
+        "projectUniqueName": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\BookingParty\\BookingParty.csproj",
         "projectName": "BookingParty",
-        "projectPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\BookingParty\\BookingParty.csproj",
+        "projectPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\BookingParty\\BookingParty.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\BookingParty\\obj\\",
+        "outputPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\BookingParty\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -135,8 +135,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj": {
-                "projectPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj"
+              "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj": {
+                "projectPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj"
               }
             }
           }
@@ -215,14 +215,14 @@
         }
       }
     },
-    "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj": {
+    "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj",
+        "projectPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Domain\\obj\\",
+        "outputPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -292,14 +292,14 @@
         }
       }
     },
-    "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj": {
+    "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj",
+        "projectUniqueName": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj",
         "projectName": "Infrastructures",
-        "projectPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj",
+        "projectPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Infrastructures\\Infrastructures.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Infrastructures\\obj\\",
+        "outputPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Infrastructures\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -320,8 +320,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj": {
-                "projectPath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj"
+              "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj": {
+                "projectPath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj"
               }
             }
           }

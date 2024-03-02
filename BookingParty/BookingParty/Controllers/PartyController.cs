@@ -102,13 +102,13 @@ namespace BookingParty.Controllers
             }
 
             // Check if the user is the owner of the party
-            var isOwner = await _partyService.CheckOwner(userIdClaim, id);
+            //var isOwner = await _partyService.CheckOwner(userIdClaim, id);
 
-            if (!isOwner.Success)
-            {
-                // User is not the owner, forbid the update
-                return BadRequest("You do not have permission"); ;
-            }
+            //if (!isOwner.Success)
+            //{
+            //    // User is not the owner, forbid the update
+            //    return BadRequest("You do not have permission"); ;
+            //}
 
             var updatedParty = await _partyService.UpdatePartyAsync(id, updatepartyDTO);
             if (!updatedParty.Success)

@@ -33,18 +33,6 @@ namespace Infrastructures.Migrations
                     b.Property<string>("ConfirmationToken")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -57,12 +45,6 @@ namespace Infrastructures.Migrations
 
                     b.Property<bool>("IsConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("ModificationBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -92,38 +74,23 @@ namespace Infrastructures.Migrations
                     b.Property<int?>("AccountId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("GuestID")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("ModificationBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("NoteForHost")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NumberOfPeople")
+                        .HasColumnType("int");
+
                     b.Property<int?>("PartyID")
                         .HasColumnType("int");
 
-                    b.Property<int>("PaymentStatus")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -151,29 +118,21 @@ namespace Infrastructures.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime?>("DateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ModificationBy")
+                    b.Property<int>("HostID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Image_url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Max_People")
+                        .HasColumnType("int");
 
                     b.Property<string>("PackageOption")
                         .HasColumnType("nvarchar(max)");
@@ -184,8 +143,9 @@ namespace Infrastructures.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Theme")
-                        .HasColumnType("int");
+                    b.Property<string>("Theme")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -205,7 +165,7 @@ namespace Infrastructures.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AccountId")
+                    b.Property<int>("AccountID")
                         .HasColumnType("int");
 
                     b.Property<int>("BookingID")
@@ -214,28 +174,7 @@ namespace Infrastructures.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("ModificationBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("PartyID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
@@ -243,7 +182,7 @@ namespace Infrastructures.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("AccountID");
 
                     b.HasIndex("BookingID")
                         .IsUnique();
@@ -281,7 +220,9 @@ namespace Infrastructures.Migrations
                 {
                     b.HasOne("Domain.Entities.Account", "Account")
                         .WithMany("Review")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("AccountID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Booking", "Booking")
                         .WithOne("Review")

@@ -17,6 +17,6 @@ namespace Application.Repositories
         Task<Account> GetUserByConfirmationToken(string token);
         Task<IEnumerable<Account>> SearchAccountByNameAsync(string name);
         Task<IEnumerable<Account>> SearchAccountByRoleNameAsync(string roleName);
-        Task<IEnumerable<Account>> GetSortedAccountAsync();
+        //Task<IEnumerable<Account>> GetSortedAccountAsync();
     }
 }

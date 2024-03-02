@@ -16,7 +16,7 @@ namespace Application.Interfaces
         Task<ServiceResponse<PartyDTO>>CreateParty(CreatePartyDTO createPartyDTO);
         Task<ServiceResponse<PartyDTO>> CreatePartyVIP(CreatePartyDTO createPartyDTO);
         Task<ServiceResponse<PartyDTO>> UpdatePartyAsync(int id, CreatePartyDTO updatePartyDTO);
-        Task<ServiceResponse<PartyDTO>> CheckOwner(int owner ,int id);
+        //Task<ServiceResponse<PartyDTO>> CheckOwner(int owner ,int id);
 
 
     }

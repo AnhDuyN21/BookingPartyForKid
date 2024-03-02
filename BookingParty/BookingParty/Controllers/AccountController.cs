@@ -153,22 +153,22 @@ namespace BookingParty.Controllers
             }
 
         }
-        [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public async Task<IActionResult> GetSortedAccount()
-        {
-            var result = await _accountService.GetSortedAccountsAsync();
+        //[Authorize(Roles = "Admin")]
+        //[HttpGet]
+        //public async Task<IActionResult> GetSortedAccount()
+        //{
+        //    var result = await _accountService.GetSortedAccountsAsync();
 
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
+        //    if (result.Success)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    else
+        //    {
+        //        return BadRequest(result);
+        //    }
 
-        }
+        //}
     }
 }
 

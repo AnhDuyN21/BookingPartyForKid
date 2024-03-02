@@ -59,9 +59,9 @@ namespace Infrastructures.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Account>> GetSortedAccountAsync()
-        {
-            return await _dbContext.Accounts.OrderByDescending(a => a.CreatedDate).ToListAsync();
-        }
+        //public async Task<IEnumerable<Account>> GetSortedAccountAsync()
+        //{
+        //    return await _dbContext.Accounts.OrderByDescending(a => a.CreatedDate).ToListAsync();
+        //}
     }
 }

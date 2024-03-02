@@ -232,30 +232,30 @@ namespace Application.Services
 
             return response;
         }
-        public async Task<ServiceResponse<PartyDTO>> CheckOwner(int owner, int id)
-        {
-            var response = new ServiceResponse<PartyDTO>();
+        //public async Task<ServiceResponse<PartyDTO>> CheckOwner(int owner, int id)
+        //{
+        //    var response = new ServiceResponse<PartyDTO>();
 
-            var exist = await _unitOfWork.PartyRepository.GetByIdAsync(id);
-            if (exist == null)
-            {
-                response.Success = false;
-                response.Message = "Party is not existed";
-            }
-            if(exist.CreatedBy != owner)
-            {
-                response.Success = false;
+        //    var exist = await _unitOfWork.PartyRepository.GetByIdAsync(id);
+        //    if (exist == null)
+        //    {
+        //        response.Success = false;
+        //        response.Message = "Party is not existed";
+        //    }
+        //    if(exist.Acc != owner)
+        //    {
+        //        response.Success = false;
                 
-            }
-            else
-            {
-                response.Success = true;
-                response.Message = "Party found";
+        //    }
+        //    else
+        //    {
+        //        response.Success = true;
+        //        response.Message = "Party found";
                
-            }
+        //    }
 
-            return response;
-        }
+        //    return response;
+        //}
 
     }
 }
