@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l2pcc7HZZxRY2H0nvFUrMiJvaldUFNXA1SW3hzCGDZ1lgmDGaSys++nalGszgoCB/lF8QEdqHIy5yAuO/WaT6Q==",
+  "dgSpecHash": "2fgSN5tSs3If2r/wtYj2++D90VekN7ALgIa/gkpLstEiYZDa17kBG/LwyqBiZqeImjlhGTiQfNUzLA9p6P/JoQ==",
   "success": true,
-  "projectFilePath": "D:\\FPT University\\CN7\\SWD392\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj",
+  "projectFilePath": "D:\\FPT University\\CN7\\PRN221\\BookingPartyForKid\\BookingParty\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",

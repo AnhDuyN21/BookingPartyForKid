@@ -74,33 +74,23 @@ namespace Infrastructures.Repositories
 
         public async Task AddAsync(TEntity entity)
         {
-            entity.CreatedDate = _timeService.GetCurrentTime();
-            entity.CreatedBy = _claimsService.GetCurrentUserId;
             await _dbSet.AddAsync(entity);
         }
 
         public void SoftRemove(TEntity entity)
         {
             entity.Status = false;
-            entity.DeletedBy = _claimsService.GetCurrentUserId;
-            entity.DeletedDate = _timeService.GetCurrentTime();
             _dbSet.Update(entity);
         }
 
         public void Update(TEntity entity)
         {
-            entity.ModificationDate = _timeService.GetCurrentTime();
-            entity.ModificationBy = _claimsService.GetCurrentUserId;
+
             _dbSet.Update(entity);
         }
 
         public async Task AddRangeAsync(List<TEntity> entities)
         {
-            foreach (var entity in entities)
-            {
-                entity.CreatedDate = _timeService.GetCurrentTime();
-                entity.CreatedBy = _claimsService.GetCurrentUserId;
-            }
             await _dbSet.AddRangeAsync(entities);
         }
 
@@ -109,8 +99,6 @@ namespace Infrastructures.Repositories
             foreach (var entity in entities)
             {
                 entity.Status = false;
-                entity.DeletedDate = _timeService.GetCurrentTime();
-                entity.DeletedBy = _claimsService.GetCurrentUserId;
             }
             _dbSet.UpdateRange(entities);
         }
@@ -118,18 +106,14 @@ namespace Infrastructures.Repositories
         public async Task<Pagination<TEntity>> ToPagination(int pageIndex = 0, int pageSize = 10)
         {
             var itemCount = await _dbSet.CountAsync();
-            var items = await _dbSet.OrderByDescending(x => x.CreatedDate)
-                                    .Skip(pageIndex * pageSize)
-                                    .Take(pageSize)
-                                    .AsNoTracking()
-                                    .ToListAsync();
+
 
             var result = new Pagination<TEntity>()
             {
                 PageIndex = pageIndex,
                 PageSize = pageSize,
-                TotalItemsCount = itemCount,
-                Items = items,
+                TotalItemsCount = itemCount
+
             };
 
             return result;
@@ -137,11 +121,6 @@ namespace Infrastructures.Repositories
 
         public void UpdateRange(List<TEntity> entities)
         {
-            foreach (var entity in entities)
-            {
-                entity.CreatedDate = _timeService.GetCurrentTime();
-                entity.CreatedBy = _claimsService.GetCurrentUserId;
-            }
             _dbSet.UpdateRange(entities);
         }
         public async void DeleteRange(List<TEntity> entities)
